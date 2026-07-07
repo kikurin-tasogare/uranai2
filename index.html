@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>占蔵 -SENZO- | 世界の占い大図鑑</title>
+<meta name="description" content="世界中の占いを『知って、試せる』大図鑑。四柱推命・西洋占星術・マヤ暦・宿曜占星術——人類の占いの系譜をたどりながら、本格計算で占えます。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="no-referrer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <span class="mark">☸</span>
+    <span class="name">占蔵</span>
+    <span class="sub">-SENZO- 世界の占い大図鑑</span>
+  </a>
+</header>
+
+<section class="hero">
+  <!-- 曼荼羅風の光背 -->
+  <svg class="enso" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="none" stroke="#c9a24b">
+      <circle cx="150" cy="150" r="145" stroke-opacity="0.25"/>
+      <circle cx="150" cy="150" r="132" stroke-opacity="0.14"/>
+      <circle cx="150" cy="150" r="104" stroke-opacity="0.30"/>
+      <circle cx="150" cy="150" r="70" stroke-opacity="0.18"/>
+      <g stroke-opacity="0.35">
+        <!-- 蓮弁 -->
+        <g id="petal">
+          <path d="M150 18 C 162 42, 162 66, 150 82 C 138 66, 138 42, 150 18 Z"/>
+        </g>
+        <use href="#petal" transform="rotate(45 150 150)"/>
+        <use href="#petal" transform="rotate(90 150 150)"/>
+        <use href="#petal" transform="rotate(135 150 150)"/>
+        <use href="#petal" transform="rotate(180 150 150)"/>
+        <use href="#petal" transform="rotate(225 150 150)"/>
+        <use href="#petal" transform="rotate(270 150 150)"/>
+        <use href="#petal" transform="rotate(315 150 150)"/>
+      </g>
+      <g stroke-opacity="0.5">
+        <circle cx="150" cy="150" r="2.5" fill="#c9a24b" stroke="none"/>
+        <circle cx="150" cy="150" r="14"/>
+      </g>
+    </g>
+  </svg>
+  <h1>占蔵</h1>
+  <div class="romaji">S E N Z O</div>
+  <p class="tagline">世界の占い、あつめました。</p>
+  <p class="tagline-sub">知って、試せる。人類五千年の占いの大図鑑。</p>
+</section>
+
+<main class="container-wide">
+
+  <h2 class="section-title">占 殿</h2>
+  <p class="section-title-note">うらどの ── 占いを選び、身を委ねよ</p>
+
+  <div class="card-grid">
+    <a class="divination-card" href="sukuyo.html">
+      <div class="glyph">☾</div>
+      <h3>宿曜占星術</h3>
+      <div class="origin">インド → 唐 → 日本(空海将来)</div>
+      <p>文殊菩薩ゆかりの経典『宿曜経』に基づく密教の占星術。月の宿る二十七宿から、その人の本性を映し出す。平安貴族を熱狂させた「日本最古の個人占星術」。</p>
+      <div class="enter">▷ 宿を観る</div>
+    </a>
+
+    <a class="divination-card" href="shichusuimei.html">
+      <div class="glyph">命</div>
+      <h3>四柱推命</h3>
+      <div class="origin">中国</div>
+      <p>生まれた年・月・日・時の四つの柱に干支を立て、陰陽五行の巡りから宿命を推す。「占いの帝王」と呼ばれる、東洋命理学の最高峰。</p>
+      <div class="enter">▷ 命式を立てる</div>
+    </a>
+
+    <a class="divination-card" href="astrology.html">
+      <div class="glyph">☉</div>
+      <h3>西洋占星術</h3>
+      <div class="origin">バビロニア → ギリシャ → 西欧</div>
+      <p>生まれた瞬間の天空を写し取ったホロスコープから、太陽・月・惑星の配置を読む。バビロニアの星読みに始まる、世界で最も広く伝わった占い。</p>
+      <div class="enter">▷ 天球を写す</div>
+    </a>
+
+    <a class="divination-card" href="maya.html">
+      <div class="glyph">⦿</div>
+      <h3>マヤ暦(ツォルキン)</h3>
+      <div class="origin">マヤ文明(中米)</div>
+      <p>二百六十日の聖なる暦ツォルキン。二十の紋章と十三の音が織りなすKINが、あなたの魂の刻印を示す。旧大陸と交わらず生まれた、もう一つの占いの系譜。</p>
+      <div class="enter">▷ KINを求める</div>
+    </a>
+  </div>
+
+  <h2 class="section-title">世界占い系譜</h2>
+  <p class="section-title-note">占いは、人類の歴史とともに旅をしてきた</p>
+
+  <div class="map-wrap">
+    <svg viewBox="0 0 680 430" xmlns="http://www.w3.org/2000/svg" font-family="serif">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#8a7340" stroke-width="1.4"/>
+        </marker>
+      </defs>
+      <style>
+        .edge { stroke:#8a7340; stroke-width:1.4; fill:none; marker-end:url(#arrow); }
+        .node rect { fill:#1c1828; stroke:#2e2840; rx:5; }
+        .node.active rect { stroke:#c9a24b; }
+        .node text { fill:#d9d2c7; font-size:13px; text-anchor:middle; }
+        .node.active text { fill:#e8c87a; }
+        .node .small { font-size:9.5px; fill:#9a927f; }
+        .era { font-size:10px; fill:#6b6455; letter-spacing:2px; }
+        .lane { stroke:#2e2840; stroke-dasharray:3 5; }
+      </style>
+
+      <!-- 起源 -->
+      <g class="node"><rect x="20" y="42" width="118" height="46"/>
+        <text x="79" y="62">バビロニア</text><text x="79" y="78" class="small">星読みの発祥 前2千年紀</text></g>
+
+      <!-- ギリシャ -->
+      <g class="node"><rect x="188" y="42" width="128" height="46"/>
+        <text x="252" y="62">ヘレニズム世界</text><text x="252" y="78" class="small">ホロスコープの発明</text></g>
+
+      <!-- 西洋占星術 -->
+      <a href="astrology.html"><g class="node active"><rect x="512" y="42" width="128" height="46"/>
+        <text x="576" y="62">西洋占星術</text><text x="576" y="78" class="small">☉ 図鑑に収蔵</text></g></a>
+
+      <!-- インド -->
+      <g class="node"><rect x="188" y="150" width="128" height="46"/>
+        <text x="252" y="170">インド</text><text x="252" y="186" class="small">二十七宿(ナクシャトラ)</text></g>
+
+      <!-- 中国(宿曜経) -->
+      <g class="node"><rect x="360" y="150" width="118" height="46"/>
+        <text x="419" y="170">唐(中国)</text><text x="419" y="186" class="small">漢訳『宿曜経』</text></g>
+
+      <!-- 日本 宿曜 -->
+      <a href="sukuyo.html"><g class="node active"><rect x="512" y="150" width="128" height="46"/>
+        <text x="576" y="170">宿曜占星術</text><text x="576" y="186" class="small">☾ 空海が将来・図鑑に収蔵</text></g></a>
+
+      <!-- 陰陽五行 -->
+      <g class="node"><rect x="188" y="258" width="128" height="46"/>
+        <text x="252" y="278">中国・陰陽五行説</text><text x="252" y="294" class="small">万物を五気で読む</text></g>
+
+      <!-- 四柱推命 -->
+      <a href="shichusuimei.html"><g class="node active"><rect x="512" y="258" width="128" height="46"/>
+        <text x="576" y="278">四柱推命</text><text x="576" y="294" class="small">命 図鑑に収蔵</text></g></a>
+
+      <!-- マヤ -->
+      <g class="node"><rect x="188" y="360" width="128" height="46"/>
+        <text x="252" y="380">マヤ文明</text><text x="252" y="396" class="small">新大陸・完全独立の系譜</text></g>
+
+      <a href="maya.html"><g class="node active"><rect x="512" y="360" width="128" height="46"/>
+        <text x="576" y="380">マヤ暦(ツォルキン)</text><text x="576" y="396" class="small">⦿ 図鑑に収蔵</text></g></a>
+
+      <!-- edges -->
+      <path class="edge" d="M138 65 H186"/>
+      <path class="edge" d="M316 65 H510"/>
+      <path class="edge" d="M252 88 V148"/>
+      <path class="edge" d="M316 173 H358"/>
+      <path class="edge" d="M478 173 H510"/>
+      <path class="edge" d="M316 281 H510"/>
+      <path class="edge" d="M316 383 H510"/>
+
+      <!-- ラベル -->
+      <text x="410" y="58" class="era">占星術の西進</text>
+      <text x="330" y="140" class="era">仏教とともに東へ</text>
+      <text x="490" y="143" class="era">806年 空海</text>
+      <text x="380" y="272" class="era">陰陽五行から命理学へ</text>
+      <text x="355" y="352" class="era">旧大陸と接触なし</text>
+      <line class="lane" x1="20" y1="336" x2="660" y2="336"/>
+    </svg>
+  </div>
+  <p class="map-note">金枠は本図鑑に収蔵済み。系譜は今後、タロット・ルーン・易経・紫微斗数・インド占星術へと拡がっていく。</p>
+
+  <h2 class="section-title">蔵 出 し 待 ち</h2>
+  <p class="section-title-note">これから図鑑に加わる占いたち</p>
+
+  <div class="card-grid">
+    <div class="divination-card locked"><div class="glyph">☰</div><h3>易経</h3><div class="origin">中国</div><p>三千年前に遡る変化の書。六十四卦で天地の兆しを読む。</p><div class="enter">─ 近日収蔵</div></div>
+    <div class="divination-card locked"><div class="glyph">紫</div><h3>紫微斗数</h3><div class="origin">中国・台湾</div><p>百余の星を十二宮に配する、東アジアのもう一つの帝王学。</p><div class="enter">─ 近日収蔵</div></div>
+    <div class="divination-card locked"><div class="glyph">ॐ</div><h3>インド占星術</h3><div class="origin">インド</div><p>恒星基準で星を読むジョーティシュ。「光の科学」の名を持つ。</p><div class="enter">─ 近日収蔵</div></div>
+    <div class="divination-card locked"><div class="glyph">❖</div><h3>タロット</h3><div class="origin">イタリア → フランス</div><p>七十八枚の絵札が映す、いまの問いへの答え。</p><div class="enter">─ 近日収蔵</div></div>
+    <div class="divination-card locked"><div class="glyph">ᚱ</div><h3>ルーン占い</h3><div class="origin">北欧</div><p>オーディンが手に入れた古代文字を石に刻み、引く。</p><div class="enter">─ 近日収蔵</div></div>
+    <div class="divination-card locked"><div class="glyph">☕</div><h3>コーヒー占い</h3><div class="origin">トルコ</div><p>飲み干したカップに残る粉の模様を読む、路地裏の占い。</p><div class="enter">─ 近日収蔵</div></div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wheel">☸</div>
+  占蔵 -SENZO- 世界の占い大図鑑<br>
+  占いは娯楽と教養のために。あなたの道は、あなたが選ぶもの。
+</footer>
+
+</body>
+</html>

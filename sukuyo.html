@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宿曜占星術 | 占蔵 -SENZO- 世界の占い大図鑑</title>
+<meta name="description" content="空海が唐から持ち帰った密教の占星術・宿曜。旧暦を天文計算で正確に求め、あなたの本命宿(二十七宿)と今日の運気を鑑定します。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="no-referrer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <span class="mark">☸</span>
+    <span class="name">占蔵</span>
+    <span class="sub">-SENZO-</span>
+  </a>
+  <a class="header-back" href="index.html">← 大図鑑へ戻る</a>
+</header>
+
+<div class="page-head">
+  <div class="glyph">☾</div>
+  <h1>宿曜占星術</h1>
+  <div class="reading">す く よ う せ ん せ い じ ゅ つ</div>
+  <div class="origin-tag">インド → 唐 → 日本 ・ 密教占星術</div>
+</div>
+
+<main class="container">
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="tab-try">占 う</button>
+    <button class="tab-btn" data-tab="tab-know">知 る(図鑑)</button>
+  </div>
+
+  <!-- ============ 占う ============ -->
+  <section class="tab-panel active" id="tab-try">
+    <div id="form-area"></div>
+    <div id="result-area"></div>
+    <p class="disclaimer">宿の算出:出生日を旧暦(天保暦の置閏法・日本標準時基準)に変換し、宿曜道伝統の暦法で二十七宿を求めています。旧暦変換には天文計算(朔・中気の実時刻)を用いています。<br>※日本と中国では標準時が1時間違うため、年によって閏月の位置が日中で異なることがあります(例:2012年・2017年)。本図鑑は日本の旧暦に従います。</p>
+  </section>
+
+  <!-- ============ 知る ============ -->
+  <section class="tab-panel zukan" id="tab-know">
+    <p class="lead">それは、文殊菩薩に託された星の教え。<br>仏教とともに海を渡り、千二百年前の日本に届いた占星術。</p>
+
+    <h2>宿曜とは何か</h2>
+    <p>宿曜占星術は、密教経典『<b>宿曜経</b>』にもとづく占星術です。正式な経題は「文殊師利菩薩及諸仙所説吉凶時日善悪宿曜経」――<b>文殊菩薩と仙人たちが説いた、日々の吉凶と星の経典</b>という意味です。生まれた日に月が宿っていた星宿(せいしゅく)=「宿」によって、その人の本性・才能・対人の縁を読み解きます。</p>
+    <p>使うのは、天の赤道帯を二十七に区切った「<b>二十七宿</b>」。昴(すばる)や参(オリオン)など、実在の星々に由来する区分です。あなたが生まれた日の宿を「<b>本命宿(ほんみょうしゅく)</b>」と呼び、これが生涯変わらないあなたの星となります。</p>
+
+    <h2>旅する占星術 ── インドから空海の手へ</h2>
+    <p>宿曜のふるさとは古代インド。月が約27日で天を一周することから生まれた「ナクシャトラ(二十七宿)」の思想が源流です。これが仏教に取り込まれ、経典として唐へ渡り、不空三蔵によって漢訳されました(759年)。</p>
+    <p>そして806年、唐で密教を学んだ<b>空海(弘法大師)</b>が、多くの経典とともに『宿曜経』を日本へ持ち帰ります。平安時代には「<b>宿曜道</b>」として陰陽道と並び立つ占いの流派となり、貴族たちは我が子の宿を調べ、婚姻や政の吉凶を宿曜師に問いました。『源氏物語』にも、光源氏の運命を「宿曜の賢き道の人」が予言する場面が登場します。</p>
+    <p>その後、宿曜道は歴史の波に呑まれて一度衰えますが、江戸時代に暦学とともに再興され、現代に伝わっています。</p>
+
+    <div class="aside"><b>俗説の余白:</b>「あまりに的中するため、時の権力者が宿曜を禁じた」という伝説が語られることがあります。史料で裏づけられた話ではなく、あくまで<b>伝承</b>ですが、それほどに恐れられた占いだった――という物語とともに愛されてきました。</div>
+
+    <h2>占いの仕組み</h2>
+    <p>宿曜道の伝統では、宿は<b>旧暦(太陰太陽暦)の月日</b>から求めます。各月の一日(朔日)に割り当てられた宿から、日を追うごとに二十七宿を一つずつ進めていく方法です。たとえば旧暦一月一日は室宿、二日は壁宿……という具合です。</p>
+    <table>
+      <tr><th>旧暦月</th><td>1月</td><td>2月</td><td>3月</td><td>4月</td><td>5月</td><td>6月</td><td>7月</td><td>8月</td><td>9月</td><td>10月</td><td>11月</td><td>12月</td></tr>
+      <tr><th>朔日の宿</th><td>室</td><td>奎</td><td>胃</td><td>畢</td><td>参</td><td>鬼</td><td>張</td><td>角</td><td>氐</td><td>心</td><td>斗</td><td>虚</td></tr>
+    </table>
+    <p>この方法のためには正確な旧暦が必要です。本図鑑では、新月(朔)と中気の実際の時刻を天文計算し、天保暦の置閏法(閏月の決め方)に従って旧暦を求めています。</p>
+    <div class="aside"><b>精度についての正直な注記:</b>宿の求め方には二つの流儀があります。①旧暦の暦日から求める<b>暦法</b>(宿曜道の伝統。本図鑑が採用)、②実際の月の位置から宿を求める<b>天文法</b>(インド占星術の流儀)。両者は日によって一宿前後ずれることがあります。どちらが「正しい」ではなく、流派の違いです。</div>
+
+    <h2>三九の秘法 ── 相性と日々の運気</h2>
+    <p>宿曜の真骨頂は、二十七宿どうしの関係を読む「<b>三九(さんく)の秘法</b>」。自分の本命宿から数えて何番目の宿かによって、<b>命・栄・衰・安・危・成・壊・友・親</b>(と深層の業・胎)の関係が定まります。これを人に当てはめれば相性、日に当てはめれば日々の運気になります。「占う」タブでは、本命宿とあわせて今日の運気も鑑定します。</p>
+
+    <h2>ここが面白い</h2>
+    <p>西洋占星術が「太陽」を軸にするのに対し、宿曜は「<b>月</b>」を軸にします。太陽が社会に見せる顔なら、月は心の内側。宿曜が「本性を暴く」と言われるのはこのためかもしれません。そして二十七宿の源流はインドのナクシャトラ――つまり宿曜は、<b>西洋占星術といとこ関係にある東洋の月の占星術</b>なのです。系譜マップでその旅路をたどってみてください。</p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wheel">☸</div>
+  占蔵 -SENZO- 世界の占い大図鑑
+</footer>
+
+<script src="js/vendor/astronomy.browser.min.js?v=3"></script>
+<script src="js/almanac.js?v=3"></script>
+<script src="js/core.js?v=3"></script>
+<script src="js/sukuyo.js?v=3"></script>
+</body>
+</html>

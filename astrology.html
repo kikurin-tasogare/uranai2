@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西洋占星術 | 占蔵 -SENZO- 世界の占い大図鑑</title>
+<meta name="description" content="バビロニアに始まる西洋占星術。天文計算エンジンで出生時の10天体の位置とアセンダントを正確に求め、あなたのホロスコープを読み解きます。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="no-referrer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <span class="mark">☸</span>
+    <span class="name">占蔵</span>
+    <span class="sub">-SENZO-</span>
+  </a>
+  <a class="header-back" href="index.html">← 大図鑑へ戻る</a>
+</header>
+
+<div class="page-head">
+  <div class="glyph">☉</div>
+  <h1>西洋占星術</h1>
+  <div class="reading">せ い よ う せ ん せ い じ ゅ つ</div>
+  <div class="origin-tag">バビロニア → ギリシャ → 西欧</div>
+</div>
+
+<main class="container">
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="tab-try">占 う</button>
+    <button class="tab-btn" data-tab="tab-know">知 る(図鑑)</button>
+  </div>
+
+  <!-- ============ 占う ============ -->
+  <section class="tab-panel active" id="tab-try">
+    <div id="form-area"></div>
+    <div id="result-area"></div>
+    <p class="disclaimer">天体位置は天文計算ライブラリ(astronomy-engine)による出生時刻時点の視黄経です。星座の区分はトロピカル方式(春分点基準)、アセンダントは出生地の緯度経度から算出しています。</p>
+  </section>
+
+  <!-- ============ 知る ============ -->
+  <section class="tab-panel zukan" id="tab-know">
+    <p class="lead">あなたが生まれたその瞬間、頭上の空はただ一度きりの配置をしていた。<br>その空の写し絵が、ホロスコープ。</p>
+
+    <h2>西洋占星術とは何か</h2>
+    <p>西洋占星術は、生まれた瞬間の<b>太陽・月・惑星の配置</b>を天球の図=<b>ホロスコープ</b>に写し取り、その人の性質や人生の主題を読み解く占いです。雑誌の「今月の牡羊座」でおなじみの星座占いは、実はこの体系のごく一部――太陽の位置だけを取り出した簡易版です。本来は十の天体それぞれが、あなたの異なる側面を語ります。</p>
+
+    <h2>歴史 ── 五千年の星読み</h2>
+    <p>始まりは紀元前二千年紀の<b>バビロニア</b>。神官たちは星の動きに神々の意志を読み、国家の吉凶を占いました。これが個人の運命を占う形に生まれ変わったのは、ヘレニズム期のギリシャ・エジプト世界。「生まれた瞬間の空がその人を刻印する」という<b>ホロスコープ占星術の発明</b>です。</p>
+    <p>以後、この体系はローマ、イスラム世界、中世ヨーロッパへと受け継がれ、ケプラーら天文学者たちも星を読みました。天文学と占星術は、もともと同じ一つの学問だったのです。さらに東へ渡った星読みの知はインドで独自に発展し――やがて仏教とともに日本へ届いて<b>宿曜占星術</b>になります。トップページの系譜マップで、その壮大な旅路をたどれます。</p>
+
+    <h2>占いの仕組み</h2>
+    <p>黄道(太陽の通り道)を春分点から30度ずつ十二に分けたものが<b>十二星座(サイン)</b>。そこにどの天体が入っているかで読み解きます。</p>
+    <table>
+      <tr><th>天体</th><th>司るもの</th></tr>
+      <tr><td>☉ 太陽</td><td>人生の目的、その人の本質・生き方の軸</td></tr>
+      <tr><td>☽ 月</td><td>素顔、感情、安心のかたち。親しい人にだけ見せる顔</td></tr>
+      <tr><td>☿ 水星</td><td>知性、言葉、コミュニケーションの癖</td></tr>
+      <tr><td>♀ 金星</td><td>愛し方、美意識、喜びの源泉</td></tr>
+      <tr><td>♂ 火星</td><td>闘い方、情熱の燃やし方、怒りの形</td></tr>
+      <tr><td>♃ 木星</td><td>幸運と拡大。人生がどこで膨らむか</td></tr>
+      <tr><td>♄ 土星</td><td>課題と鍛錬。時間をかけて成熟する場所</td></tr>
+      <tr><td>ASC</td><td>アセンダント=生まれた瞬間の東の地平線。まとう雰囲気・第一印象</td></tr>
+    </table>
+    <p>天王星・海王星・冥王星は動きが遅く、同世代が共有する「時代の気分」を表します。</p>
+
+    <div class="aside"><b>「精度」の見せ場:</b>星座の境目(カスプ)付近の生まれの場合、雑誌の日付区切りでは星座を間違えることがあります。星座の切り替わりは年によって日時が動くからです。本図鑑は出生日時における太陽の黄経そのものを天文計算するため、境目生まれでも正確です。月は一日で約13度も動くため、<b>出生時刻</b>が分かるとぐっと精度が上がります。</div>
+
+    <h2>ここが面白い</h2>
+    <p>宿曜占星術が「月」でその人の本性を読むように、西洋占星術でも月は「素顔」を表します。太陽は外に向かう顔、月は内なる顔。<b>太陽と月、両方を知ってはじめて一人の人間の全体像が見えてくる</b>――五千年かけて人類がたどり着いた、星読みの知恵です。</p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wheel">☸</div>
+  占蔵 -SENZO- 世界の占い大図鑑
+</footer>
+
+<script src="js/vendor/astronomy.browser.min.js?v=3"></script>
+<script src="js/almanac.js?v=3"></script>
+<script src="js/core.js?v=3"></script>
+<script src="js/astrology.js?v=3"></script>
+</body>
+</html>
