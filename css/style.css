@@ -427,6 +427,46 @@ a:hover { color: #c6f5e0; }
 .planet-row .p-deg { font-size: 11.5px; color: var(--text-faint); }
 .planet-row .p-text { flex-basis: 100%; font-size: 13px; color: var(--text); margin-top: 2px; }
 
+/* ---------- 紫微斗数の命盤 ---------- */
+.meiban {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(86px, auto);
+  gap: 4px;
+  margin: 8px 0;
+}
+.mb-cell {
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 7px 8px;
+  min-width: 0;
+}
+.mb-cell.mb-mei {
+  border-color: var(--gold);
+  box-shadow: 0 0 14px rgba(95,191,154,0.25) inset;
+}
+.mb-branch { font-size: 10px; color: var(--text-faint); letter-spacing: 0.2em; }
+.mb-palace { font-size: 11.5px; color: var(--shu-bright); margin: 1px 0 4px; }
+.mb-stars { font-size: 12.5px; color: var(--gold-bright); line-height: 1.6; }
+.mb-center {
+  grid-column: 2 / 4;
+  grid-row: 2 / 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: radial-gradient(ellipse 80% 70% at 50% 45%, rgba(95,191,154,0.08), transparent 75%), var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+@media (max-width: 560px) {
+  .meiban { grid-auto-rows: minmax(72px, auto); gap: 3px; }
+  .mb-stars { font-size: 10.5px; }
+  .mb-palace { font-size: 10px; }
+}
+
 /* ---------- 漂うクラゲ(祐希ちゃんへ) ---------- */
 .jelly {
   position: fixed;

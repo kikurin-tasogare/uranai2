@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>紫微斗数 | 占蔵 -SENZO- 世界の占い大図鑑</title>
+<meta name="description" content="台湾・香港で絶大な人気を誇る紫微斗数。旧暦と時辰から十二宮の命盤を立て、紫微星ほか十四主星があなたの人生の見取り図を描きます。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="no-referrer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <span class="mark">☸</span>
+    <span class="name">占蔵</span>
+    <span class="sub">-SENZO-</span>
+  </a>
+  <a class="header-back" href="index.html">← 大図鑑へ戻る</a>
+</header>
+
+<div class="page-head">
+  <div class="glyph">紫</div>
+  <h1>紫微斗数</h1>
+  <div class="reading">し び と す う</div>
+  <div class="origin-tag">中国(宋代) → 台湾・香港 ・ 東洋の帝王学</div>
+</div>
+
+<main class="container">
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="tab-try">占 う</button>
+    <button class="tab-btn" data-tab="tab-know">知 る(図鑑)</button>
+  </div>
+
+  <!-- ============ 占う ============ -->
+  <section class="tab-panel active" id="tab-try">
+    <div id="form-area"></div>
+    <div id="result-area"></div>
+    <p class="disclaimer">命盤の算出:出生日を旧暦(天文計算・日本標準時基準)に変換し、三合派の基本法で命宮・身宮・五行局・十四主星を配置しています。時辰は真太陽時で判定。閏月生まれは前月として扱います(流派により異なります)。</p>
+  </section>
+
+  <!-- ============ 知る ============ -->
+  <section class="tab-panel zukan" id="tab-know">
+    <p class="lead">天の北極に輝く紫微星――皇帝の星。<br>百余の星を十二の宮に配し、人生の見取り図を描く東洋の帝王学。</p>
+
+    <h2>紫微斗数とは何か</h2>
+    <p>紫微斗数は、生まれた日時から「<b>命盤(めいばん)</b>」という人生の見取り図を作る中国の占星術です。盤は十二の「<b>宮</b>」――命宮・夫妻宮・財帛宮・官禄宮など人生の十二の領域――に分かれ、そこに<b>紫微星</b>を筆頭とする星々を配置します。どの宮にどの星が入るかで、性格から結婚、仕事、財運まで、人生の各領域を面で読めるのが最大の特徴です。</p>
+    <p>主役となる星は<b>十四主星</b>。北天の帝王・紫微星、行動の将軍・七殺星、夢見る桃花の貪狼星……星の一つひとつが強烈な個性を持ったキャラクターであり、あなたの命宮に入った星が「あなたという物語の主人公」になります。</p>
+
+    <h2>歴史 ── 皇帝の星の学問</h2>
+    <p>成立は宋代(10〜13世紀)と伝えられ、仙人・<b>陳希夷(ちんきい)</b>の創始とする伝承があります。名前の由来は、天の北極に位置する紫微垣――北極星を中心とする「天帝の宮殿」です。動かぬ北極星を帝と見立て、その周囲を巡る星々で世界を写し取る発想は、皇帝を中心とした中国の世界観そのものでした。</p>
+    <p>長らく門外不出に近い秘伝でしたが、20世紀後半に台湾・香港で爆発的に普及し、いまや東アジアでは<b>四柱推命と人気を二分する「二大命術」</b>。台湾では書店に紫微斗数の棚が丸ごとあるほどの国民的占いです。日本ではまだ知る人ぞ知る存在――この図鑑の「蔵出し」にふさわしい大物です。</p>
+
+    <h2>占いの仕組み</h2>
+    <p>紫微斗数は<b>旧暦</b>で占います。手順はおおまかに:</p>
+    <table>
+      <tr><th>1</th><td>生まれの旧暦月と時辰(2時間刻みの十二支の時刻)から<b>命宮</b>の位置を定める</td></tr>
+      <tr><th>2</th><td>命宮の干支から<b>五行局</b>(水二局・木三局・金四局・土五局・火六局)を求める</td></tr>
+      <tr><th>3</th><td>五行局と旧暦の生まれ日から<b>紫微星</b>の位置を定める</td></tr>
+      <tr><th>4</th><td>紫微星を起点に、十四主星が定位置に連なって配置される</td></tr>
+    </table>
+    <p>命宮に星がない「空宮」の場合は、向かいの宮(対宮)の星を借りて読みます。これも紫微斗数の醍醐味の一つです。</p>
+
+    <div class="aside"><b>四柱推命との違い:</b>同じ「生まれた日時で占う中国の命術」でも、四柱推命が八文字の五行の<b>気の配合</b>を読む化学だとすれば、紫微斗数は十二宮に星を並べた<b>人生の地図</b>を読む地理学。四柱が「あなたはどんな気質の人か」に強く、紫微は「人生のどの領域で何が起こりやすいか」に強い、と言われます。両方立てて見比べるのが本場流です。</div>
+
+    <h2>ここが面白い</h2>
+    <p>西洋占星術が実際の天体の位置を計算するのに対し、紫微斗数の星の多くは実在の星ではなく、<b>暦から生まれる「仮想の星」</b>です。それなのに――いや、だからこそ――純粋に論理だけで組み上がった精密機械のような美しさがあります。実際の空を見上げる占星術と、頭の中に星空を組み立てる紫微斗数。人類は二通りのやり方で星に運命を託したのです。</p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wheel">☸</div>
+  占蔵 -SENZO- 世界の占い大図鑑
+</footer>
+
+<script src="js/vendor/astronomy.browser.min.js?v=8"></script>
+<script src="js/almanac.js?v=8"></script>
+<script src="js/core.js?v=8"></script>
+<script src="js/shibi.js?v=8"></script>
+</body>
+</html>

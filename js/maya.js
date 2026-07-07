@@ -48,6 +48,27 @@
     { n: 13, key: "超越", text: "一巡りを見届けて次の周期へ渡す音。持って生まれた霊性の高さを示します。" },
   ];
 
+  /* ---------- ロングカウントとハアブ暦 ---------- */
+  const HAAB = ["ポプ","ウォ","シップ","ソッツ","セック","シュル","ヤシュキン","モル","チェン","ヤシュ","サック","ケフ","マック","カンキン","ムワン","パシュ","カヤブ","クムク","ワイェブ"];
+
+  function longCount(days) {
+    let r = days;
+    const baktun = Math.floor(r / 144000); r -= baktun * 144000;
+    const katun = Math.floor(r / 7200); r -= katun * 7200;
+    const tun = Math.floor(r / 360); r -= tun * 360;
+    const uinal = Math.floor(r / 20);
+    const kin = r - uinal * 20;
+    return `${baktun}.${katun}.${tun}.${uinal}.${kin}`;
+  }
+
+  function haab(days) {
+    // 紀元(4アハウ 8クムク)のハアブ位置 = クムク月8日 = 348日目
+    const pos = ((348 + days) % 365 + 365) % 365;
+    const month = Math.floor(pos / 20);
+    const day = pos - month * 20;
+    return `${day} ${HAAB[month]}`;
+  }
+
   function calcKin(y, m, d) {
     const days = Almanac.jdn(y, m, d) - CORRELATION;
     const tone = ((days + 3) % 13 + 13) % 13 + 1;
@@ -88,6 +109,17 @@
         </div>
 
         <div class="result-block">
+          <h3>マヤ式のあなたの誕生日</h3>
+          ${(() => {
+            const days = Almanac.jdn(p.y, p.m, p.d) - CORRELATION;
+            return `<p>マヤの石碑に刻むなら、あなたの誕生日は――<br>
+            <b style="color:var(--gold-bright); font-size:18px; letter-spacing:0.1em;">${longCount(days)}</b><span class="dim">(ロングカウント:マヤ紀元からの通算日)</span><br>
+            <b style="color:var(--gold-bright)">${tone} ${s.n}</b><span class="dim">(ツォルキン=聖なる260日暦)</span> ・ <b style="color:var(--gold-bright)">${haab(days)}</b><span class="dim">(ハアブ=365日の太陽暦)</span></p>
+            <p class="dim">マヤの人々は用途の違う複数の暦を同時に回し、日付をこの三点セットで記録しました。2012年に「マヤ暦が終わる」と騒がれたのは、ロングカウントの桁が13.0.0.0.0に達しただけ――車のオドメーターが一回転したようなものです。</p>`;
+          })()}
+        </div>
+
+        <div class="result-block">
           <h3>暦の再誕(カレンダーラウンド)</h3>
           <p>ツォルキン(260日)と太陽暦(365日)の組み合わせは、<b>18980日=約52年</b>で一巡りします。あなたの暦が生まれた日と同じ組み合わせに還るのは <b style="color:var(--gold-bright)">${rebirth.getUTCFullYear()}年${rebirth.getUTCMonth() + 1}月${rebirth.getUTCDate()}日</b> ごろ。マヤの人々はこの日を、人生の「生まれ直し」と考えました。</p>
         </div>
@@ -100,6 +132,8 @@
           ["GMT対応(コリレーション)", "マヤ暦と西暦の対応づけの基準値。本図鑑は考古学の標準(584283)を使っています。"],
           ["ドリームスペル", "1990年代に創作された現代版マヤ暦。日本の「マヤ暦占い」の多くはこちらで、本図鑑の伝統マヤ暦とはKINがずれることがあります。"],
           ["カレンダーラウンド", "ツォルキン(260日)と太陽暦(365日)の組み合わせが一巡する約52年の周期。マヤでは人生の大きな節目とされました。"],
+          ["ロングカウント", "マヤ紀元(紀元前3114年8月11日)からの通算日を5桁で刻む長期暦。石碑の日付はこの形式で、バクトゥン(144000日)・カトゥン・トゥン・ウィナル・キンの位取りです。"],
+          ["ハアブ暦", "20日×18ヶ月+余日5日(ワイェブ)=365日の太陽暦。農事や季節はこちらで数えました。"],
         ])}
       </div>
     `;

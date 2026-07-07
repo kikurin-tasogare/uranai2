@@ -59,6 +59,36 @@
     { key: "Pluto",   sym: "♇", name: "冥王星", lens: "変容(世代)", intro: "", personal: false },
   ];
 
+  /* ---------- アスペクト(座相) ---------- */
+  const ASPECTS = [
+    { deg: 0,   orb: 8, n: "合(コンジャンクション)", tag: "一体化", text: "二つの星の力が混ざり合い、強く増幅されます。" },
+    { deg: 60,  orb: 4, n: "六分(セクスタイル)",     tag: "好機",   text: "軽やかに助け合う角度。意識して使うと伸びる才能です。" },
+    { deg: 90,  orb: 6, n: "矩(スクエア)",           tag: "緊張",   text: "摩擦を生む角度。しかしその葛藤こそが成長のバネになります。" },
+    { deg: 120, orb: 6, n: "三分(トライン)",         tag: "調和",   text: "自然に流れる調和の角度。努力なしに働く生まれつきの才能です。" },
+    { deg: 180, orb: 8, n: "衝(オポジション)",       tag: "対峙",   text: "引っ張り合う角度。二極を行き来しながらバランスを学びます。" },
+  ];
+
+  function findAspects(rows) {
+    const found = [];
+    const targets = rows.filter(r => ["Sun","Moon","Mercury","Venus","Mars","Jupiter","Saturn"].includes(r.key));
+    for (let i = 0; i < targets.length; i++) {
+      for (let j = i + 1; j < targets.length; j++) {
+        let sep = Math.abs(targets[i].lon - targets[j].lon) % 360;
+        if (sep > 180) sep = 360 - sep;
+        for (const a of ASPECTS) {
+          if (Math.abs(sep - a.deg) <= a.orb) {
+            found.push({ p1: targets[i], p2: targets[j], a, exact: Math.abs(sep - a.deg) });
+            break;
+          }
+        }
+      }
+    }
+    return found.sort((x, y) => x.exact - y.exact);
+  }
+
+  const ELEM_COLOR = { "火": "#e0708f", "地": "#7fb069", "風": "#69c3da", "水": "#6a8fd8" };
+  const ELEM_NOTE = { "火": "直感と情熱", "地": "感覚と現実", "風": "思考と言葉", "水": "感情と共感" };
+
   function signOf(lon) {
     const idx = Math.floor((((lon % 360) + 360) % 360) / 30);
     const deg = (((lon % 360) + 360) % 360) - idx * 30;
@@ -127,14 +157,47 @@
           <p class="dim" style="margin-top:10px;">天王星・海王星・冥王星は動きが遅く、同世代が共有する「時代の気分」を表します。</p>
         </div>
 
+        <div class="result-block">
+          <h3>主要アスペクト ── 星々の対話</h3>
+          ${(() => {
+            const asp = findAspects(rows);
+            if (!asp.length) return `<p class="dim">主要な角度を作る組み合わせはありませんでした。星々がそれぞれ独立に働く、一匹狼型の配置です。</p>`;
+            return asp.slice(0, 6).map(x => `
+              <p><b style="color:var(--gold-bright)">${x.p1.sym}${x.p1.name} × ${x.p2.sym}${x.p2.name}</b> ── <b style="color:var(--shu-bright)">${x.a.n}・${x.a.tag}</b><br>
+              <span style="font-size:13px;">${x.p1.lens}と${x.p2.lens}のあいだの角度。${x.a.text}</span></p>`).join("");
+          })()}
+          <p class="dim">誤差(オーブ)の小さい順に最大6つまで表示しています。</p>
+        </div>
+
+        <div class="result-block">
+          <h3>エレメントバランス ── 四大元素</h3>
+          ${(() => {
+            const counts = { "火": 0, "地": 0, "風": 0, "水": 0 };
+            rows.forEach(r => counts[r.sign.elem]++);
+            if (asc) counts[asc.sign.elem]++;
+            const max = Math.max(...Object.values(counts), 1);
+            const bars = Object.entries(counts).map(([e, c]) => `
+              <div class="bar-row">
+                <span class="bar-label">${e}</span>
+                <div class="bar-track"><div class="bar-fill" style="width:${c / max * 100}%; background:${ELEM_COLOR[e]}"></div></div>
+                <span class="bar-num">${c}</span>
+              </div>`).join("");
+            const strongest = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+            const missing = Object.entries(counts).filter(([, c]) => c === 0).map(([e]) => e);
+            return bars + `<p style="margin-top:10px;">最も強い元素は<b style="color:var(--gold-bright)">「${strongest[0]}」</b>――${ELEM_NOTE[strongest[0]]}の気質が土台です。${missing.length ? `<b style="color:var(--shu-bright)">「${missing.join("・")}」</b>が欠けており、${missing.map(e => ELEM_NOTE[e]).join("、")}は意識して補う伸びしろです。` : "四元素がすべて揃ったバランス型です。"}</p>`;
+          })()}
+        </div>
+
         ${Uranai.glossary([
+          ["アスペクト", "天体どうしが作る特定の角度(0・60・90・120・180度)。星と星の「会話の調子」を表し、調和角は才能、緊張角は成長課題として読みます。"],
+          ["オーブ", "アスペクト成立とみなす角度の許容誤差。誤差が小さいほど、その対話は強く働きます。"],
+          ["エレメント(四大元素)", "12星座を火・地・風・水に4分類したもの。天体がどの元素に多く集まるかで、その人の基本気質が見えます。"],
           ["ホロスコープ", "生まれた瞬間の天体の配置を写し取った天空の図。この鑑定全体が、あなたのホロスコープを読んだものです。"],
           ["太陽星座", "生まれたとき太陽が入っていた星座。雑誌の「○○座のあなた」はこれ。人生の目的や生き方の軸を表します。"],
           ["月星座", "生まれたとき月が入っていた星座。素顔・感情・安心のかたちなど、親しい人にだけ見せる内面を表します。"],
           ["アセンダント(ASC)", "生まれた瞬間に東の地平線から昇っていた星座。まとう雰囲気や第一印象を表し、出生時刻と出生地から計算します。"],
           ["サイン(星座)", "太陽の通り道(黄道)を春分点から30度ずつ12分割した区分。実際の星の並びではなく、天の「区画」です。"],
           ["度数(°)", "その天体が星座の中のどのあたりにいるかを示す位置。0度が星座の入口、29度が出口です。"],
-          ["エレメント", "12星座を火・地・風・水の4グループに分けたもの。火=直感と情熱、地=感覚と実際、風=思考と言葉、水=感情と共感。"],
           ["活動・不動・柔軟宮", "12星座のもう一つの分類。活動=始める力、不動=続ける力、柔軟=変わり身の力。"],
           ["守護星", "各星座を司るとされる天体。その星座の気質の源です。"],
           ["トロピカル方式", "春分点を牡羊座0度とする、西洋占星術の標準的な座標の取り方。実際の星座の位置基準(インド占星術)とは約24度ずれます。"],

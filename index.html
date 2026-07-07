@@ -99,13 +99,29 @@
       <p>陰陽の爻を六段重ねた六十四卦で「時」を読む、人類最古級の占い。三枚の銭を六度投じ、いまの問いへの答えを立てる。東洋占術すべての源流。</p>
       <div class="enter">▷ 卦を立てる</div>
     </a>
+
+    <a class="divination-card" href="shibi.html">
+      <div class="glyph">紫</div>
+      <h3>紫微斗数</h3>
+      <div class="origin">中国(宋代) → 台湾・香港</div>
+      <p>北極星=帝の星を中心に、十四主星を十二宮へ配して人生の見取り図を描く。台湾では四柱推命と人気を二分する「もう一つの帝王学」。</p>
+      <div class="enter">▷ 命盤を立てる</div>
+    </a>
+
+    <a class="divination-card" href="jyotish.html">
+      <div class="glyph">ॐ</div>
+      <h3>インド占星術</h3>
+      <div class="origin">インド ・ 光の科学</div>
+      <p>実際の星空に沿って星を読む恒星基準のジョーティシュ。月の二十七宿と、人生120年の時刻表ヴィムショッタリ・ダシャーで「いつ」を読む。</p>
+      <div class="enter">▷ 星図を写す</div>
+    </a>
   </div>
 
   <h2 class="section-title">世界占い系譜</h2>
   <p class="section-title-note">占いは、人類の歴史とともに旅をしてきた</p>
 
   <div class="map-wrap">
-    <svg viewBox="0 0 680 430" xmlns="http://www.w3.org/2000/svg" font-family="serif">
+    <svg viewBox="0 0 680 530" xmlns="http://www.w3.org/2000/svg" font-family="serif">
       <defs>
         <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
           <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#3c8f6e" stroke-width="1.4"/>
@@ -138,6 +154,10 @@
       <g class="node"><rect x="188" y="150" width="128" height="46"/>
         <text x="252" y="170">インド</text><text x="252" y="186" class="small">二十七宿(ナクシャトラ)</text></g>
 
+      <!-- インド占星術 -->
+      <a href="jyotish.html"><g class="node active"><rect x="20" y="150" width="118" height="46"/>
+        <text x="79" y="170">インド占星術</text><text x="79" y="186" class="small">ॐ 図鑑に収蔵</text></g></a>
+
       <!-- 中国(宿曜経) -->
       <g class="node"><rect x="360" y="150" width="118" height="46"/>
         <text x="419" y="170">唐(中国)</text><text x="419" y="186" class="small">漢訳『宿曜経』</text></g>
@@ -158,12 +178,16 @@
       <a href="shichusuimei.html"><g class="node active"><rect x="512" y="258" width="128" height="46"/>
         <text x="576" y="278">四柱推命</text><text x="576" y="294" class="small">命 図鑑に収蔵</text></g></a>
 
-      <!-- マヤ -->
-      <g class="node"><rect x="188" y="360" width="128" height="46"/>
-        <text x="252" y="380">マヤ文明</text><text x="252" y="396" class="small">新大陸・完全独立の系譜</text></g>
+      <!-- 紫微斗数 -->
+      <a href="shibi.html"><g class="node active"><rect x="512" y="360" width="128" height="46"/>
+        <text x="576" y="380">紫微斗数</text><text x="576" y="396" class="small">紫 図鑑に収蔵</text></g></a>
 
-      <a href="maya.html"><g class="node active"><rect x="512" y="360" width="128" height="46"/>
-        <text x="576" y="380">マヤ暦(ツォルキン)</text><text x="576" y="396" class="small">⦿ 図鑑に収蔵</text></g></a>
+      <!-- マヤ -->
+      <g class="node"><rect x="188" y="460" width="128" height="46"/>
+        <text x="252" y="480">マヤ文明</text><text x="252" y="496" class="small">新大陸・完全独立の系譜</text></g>
+
+      <a href="maya.html"><g class="node active"><rect x="512" y="460" width="128" height="46"/>
+        <text x="576" y="480">マヤ暦(ツォルキン)</text><text x="576" y="496" class="small">⦿ 図鑑に収蔵</text></g></a>
 
       <!-- edges -->
       <path class="edge" d="M138 65 H186"/>
@@ -173,25 +197,26 @@
       <path class="edge" d="M478 173 H510"/>
       <path class="edge" d="M138 281 H186"/>
       <path class="edge" d="M316 281 H510"/>
-      <path class="edge" d="M316 383 H510"/>
+      <path class="edge" d="M186 173 H140"/>
+      <path class="edge" d="M252 304 V383 H510"/>
+      <path class="edge" d="M316 483 H510"/>
 
       <!-- ラベル -->
       <text x="410" y="58" class="era">占星術の西進</text>
       <text x="330" y="140" class="era">仏教とともに東へ</text>
       <text x="490" y="143" class="era">806年 空海</text>
       <text x="380" y="272" class="era">陰陽五行から命理学へ</text>
-      <text x="355" y="352" class="era">旧大陸と接触なし</text>
-      <line class="lane" x1="20" y1="336" x2="660" y2="336"/>
+      <text x="330" y="375" class="era">宋代、星の命理学へ</text>
+      <text x="355" y="452" class="era">旧大陸と接触なし</text>
+      <line class="lane" x1="20" y1="436" x2="660" y2="436"/>
     </svg>
   </div>
-  <p class="map-note">翡翠色の枠は本図鑑に収蔵済み。系譜は今後、タロット・ルーン・紫微斗数・インド占星術へと拡がっていく。</p>
+  <p class="map-note">翡翠色の枠は本図鑑に収蔵済み。系譜は今後、タロット・ルーン・コーヒー占いへと拡がっていく。</p>
 
   <h2 class="section-title">蔵 出 し 待 ち</h2>
   <p class="section-title-note">これから図鑑に加わる占いたち</p>
 
   <div class="card-grid">
-    <div class="divination-card locked"><div class="glyph">紫</div><h3>紫微斗数</h3><div class="origin">中国・台湾</div><p>百余の星を十二宮に配する、東アジアのもう一つの帝王学。</p><div class="enter">─ 近日収蔵</div></div>
-    <div class="divination-card locked"><div class="glyph">ॐ</div><h3>インド占星術</h3><div class="origin">インド</div><p>恒星基準で星を読むジョーティシュ。「光の科学」の名を持つ。</p><div class="enter">─ 近日収蔵</div></div>
     <div class="divination-card locked"><div class="glyph">❖</div><h3>タロット</h3><div class="origin">イタリア → フランス</div><p>七十八枚の絵札が映す、いまの問いへの答え。</p><div class="enter">─ 近日収蔵</div></div>
     <div class="divination-card locked"><div class="glyph">ᚱ</div><h3>ルーン占い</h3><div class="origin">北欧</div><p>オーディンが手に入れた古代文字を石に刻み、引く。</p><div class="enter">─ 近日収蔵</div></div>
     <div class="divination-card locked"><div class="glyph">☕</div><h3>コーヒー占い</h3><div class="origin">トルコ</div><p>飲み干したカップに残る粉の模様を読む、路地裏の占い。</p><div class="enter">─ 近日収蔵</div></div>
@@ -206,6 +231,6 @@
   <span style="font-size:10.5px; opacity:0.75;">この蔵には、クラゲが棲みついています。</span>
 </footer>
 
-<script src="js/core.js?v=7"></script>
+<script src="js/core.js?v=8"></script>
 </body>
 </html>
