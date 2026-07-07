@@ -427,6 +427,22 @@ a:hover { color: #f4dfa8; }
 .planet-row .p-deg { font-size: 11.5px; color: var(--text-faint); }
 .planet-row .p-text { flex-basis: 100%; font-size: 13px; color: var(--text); margin-top: 2px; }
 
+/* 用語のしおり */
+.glossary { margin-top: 18px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); }
+.glossary summary {
+  cursor: pointer; padding: 14px 18px;
+  color: var(--gold-bright); font-size: 13.5px; letter-spacing: 0.15em;
+  list-style: none; user-select: none;
+}
+.glossary summary::-webkit-details-marker { display: none; }
+.glossary summary::before { content: "❖ "; color: var(--gold-dim); }
+.glossary summary::after { content: " ▾"; color: var(--text-faint); font-size: 11px; }
+.glossary[open] summary { border-bottom: 1px dashed var(--line); }
+.glossary[open] summary::after { content: " ▴"; }
+.glossary dl { padding: 6px 18px 16px; margin: 0; }
+.glossary dt { color: var(--shu-bright); font-size: 13px; margin-top: 12px; letter-spacing: 0.08em; }
+.glossary dd { margin: 3px 0 0 0; font-size: 12.5px; color: var(--text-dim); line-height: 1.9; }
+
 .disclaimer {
   margin-top: 46px; text-align: center;
   font-size: 11px; color: var(--text-faint); letter-spacing: 0.1em;

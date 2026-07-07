@@ -181,5 +181,14 @@ const Uranai = (() => {
     });
   }
 
-  return { PREFS, esc, loadProfiles, upsertProfile, removeProfile, renderForm, initTabs };
+  /* ---------- 用語のしおり ---------- */
+  // items: [[用語, 説明], ...] → 折りたたみ式の用語解説ブロック
+  function glossary(items) {
+    return `<details class="glossary">
+      <summary>用語のしおり ── この鑑定に出てくる言葉</summary>
+      <dl>${items.map(([t, d]) => `<dt>${t}</dt><dd>${d}</dd>`).join("")}</dl>
+    </details>`;
+  }
+
+  return { PREFS, esc, glossary, loadProfiles, upsertProfile, removeProfile, renderForm, initTabs };
 })();
