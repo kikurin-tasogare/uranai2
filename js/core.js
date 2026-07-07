@@ -212,6 +212,45 @@ const Uranai = (() => {
     });
   }
 
+  /* ---------- 漂うクラゲ(祐希ちゃんが好きなので全ページに) ---------- */
+  function jellySVG(main, spots) {
+    return `<svg viewBox="0 0 64 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g stroke="${main}" fill="none" stroke-width="2" stroke-linecap="round">
+        <path d="M10 34 C10 12 54 12 54 34 C54 41 48 44 32 44 C16 44 10 41 10 34 Z" fill="${main}" fill-opacity="0.12"/>
+        <path d="M18 46 C16 58 22 62 18 74"/>
+        <path d="M26 46 C28 60 22 66 26 80"/>
+        <path d="M34 46 C32 58 38 64 34 78"/>
+        <path d="M42 46 C44 58 38 64 42 74"/>
+        <path d="M48 44 C50 52 46 56 48 64"/>
+      </g>
+      <g fill="${spots}" fill-opacity="0.8">
+        <circle cx="24" cy="28" r="2.6"/>
+        <circle cx="34" cy="23" r="2"/>
+        <circle cx="42" cy="30" r="2.2"/>
+      </g>
+    </svg>`;
+  }
+
+  function scatterJellyfish() {
+    const jade = "#5fbf9a", cyan = "#69c3da", pink = "#ef93bd";
+    const jellies = [
+      { top: "16%", right: "6%",  w: 64, main: cyan, spots: pink, op: 0.4,  dur: "13s" },
+      { top: "46%", left:  "4%",  w: 44, main: pink, spots: cyan, op: 0.32, dur: "17s" },
+      { top: "72%", right: "10%", w: 52, main: jade, spots: pink, op: 0.34, dur: "15s" },
+      { top: "8%",  left:  "14%", w: 30, main: cyan, spots: pink, op: 0.26, dur: "11s" },
+    ];
+    for (const j of jellies) {
+      const el = document.createElement("div");
+      el.className = "jelly";
+      el.style.cssText =
+        `width:${j.w}px; opacity:${j.op}; --dur:${j.dur};` +
+        (j.top ? `top:${j.top};` : "") + (j.left ? `left:${j.left};` : "") + (j.right ? `right:${j.right};` : "");
+      el.innerHTML = jellySVG(j.main, j.spots);
+      document.body.appendChild(el);
+    }
+  }
+  scatterJellyfish();
+
   /* ---------- タブ切り替え ---------- */
   function initTabs() {
     document.querySelectorAll(".tab-btn").forEach(btn => {
