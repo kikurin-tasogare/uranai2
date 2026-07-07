@@ -61,6 +61,27 @@
     return ["栄","衰","安","危","成","壊","友","親"][r - 1];
   }
 
+  /* ---------- 相性(六種の縁) ---------- */
+  const AISHO = {
+    "命": { name: "命(めい)の縁", luck: "○", text: "同じ宿を持つ、合わせ鏡のような二人。言葉にしなくても分かり合える深さがある一方、長所も弱点もそっくりなので、同じ壁に同時にぶつかりがち。相手の姿は明日の自分と心得て、労り合うのが吉。" },
+    "栄親": { name: "栄親(えいしん)の縁", luck: "◎", text: "宿曜で最上とされる大吉の縁。互いの存在がそのまま繁栄をもたらし、そばにいるだけで運が育ちます。夫婦・生涯の伴侶に最も良いとされ、平安の昔から婚姻の吉凶はまずこの縁で占われました。" },
+    "友衰": { name: "友衰(ゆうすい)の縁", luck: "○", text: "気の置けない友のような、穏やかで居心地のよい縁。ただし片方が「尽くし役(衰)」に回りやすい組み合わせでもあります。どちらが尽くしているかをときどき点検して、役割を交代できれば長続きします。" },
+    "安壊": { name: "安壊(あんかい)の縁", luck: "△", text: "宿曜名物、「危険な魅力」の縁。理屈を超えて強烈に惹かれ合いますが、近づきすぎると互いの土台を壊し合うとも伝えられます。適度な距離と自分の世界を保てたとき、この縁は何より刺激的な宝になります。" },
+    "危成": { name: "危成(きせい)の縁", luck: "○", text: "刺激し合い、成長させ合う縁。一緒にいると挑戦が増え、成し遂げる力が湧く組み合わせです。危うさと成就が同居するスリリングな関係で、恋愛よりもまず、仕事や創作の相棒として最高の相性とされます。" },
+    "業胎": { name: "業胎(ごうたい)の縁", luck: "◎", text: "前世からの因縁と伝えられる、深層で結ばれた魂の縁。初対面なのに懐かしい、理由なく放っておけない――そんな感覚を伴うことが多いとされます。過去から続く宿題を一緒に解いていく、物語の長い二人です。" },
+  };
+
+  function aishoType(d) {
+    const r = relOf(d);
+    if (r === "命") return "命";
+    if (r === "業" || r === "胎") return "業胎";
+    if (r === "栄" || r === "親") return "栄親";
+    if (r === "友" || r === "衰") return "友衰";
+    if (r === "安" || r === "壊") return "安壊";
+    return "危成";
+  }
+  const DIST_RANGE = d => (d <= 9 ? "近距離" : d <= 18 ? "中距離" : "遠距離");
+
   function nakIndexOf(name) { return NAKS.findIndex(x => x.n === name); }
 
   // 旧暦 {month, day} → 宿インデックス
@@ -108,8 +129,51 @@
           <p>今日(${now.y}年${now.m}月${now.d}日/${leapStr(todayK)})の宿は <b style="color:var(--gold-bright)">${NAKS[todayNak].n}</b>。あなたの本命宿から見て <b style="color:var(--shu-bright)">${rel.name} ${rel.luck}</b> の日です。</p>
           <p>${rel.text}</p>
         </div>
+
+        <div class="result-block">
+          <h3>ふたりの相性 ── 六種の縁</h3>
+          <p class="dim">もう一人の生年月日を入れると、二つの宿の間に結ばれた縁(命・栄親・友衰・安壊・危成・業胎)を観ます。</p>
+          <div class="field-row" style="margin-top:10px;">
+            <div class="field" style="flex:1 1 120px;">
+              <label>お相手の呼び名</label>
+              <input type="text" id="a-name2" placeholder="例:ゆきちゃん">
+            </div>
+            <div class="field">
+              <label>お相手の生年月日</label>
+              <input type="date" id="a-date2" min="1900-01-01" max="2035-12-31">
+            </div>
+          </div>
+          <button class="btn-sub" id="a-check" style="width:100%; padding:10px;">縁 を 観 る</button>
+          <div id="aisho-out"></div>
+        </div>
       </div>
     `;
+
+    area.querySelector("#a-check").addEventListener("click", () => {
+      const dateStr = area.querySelector("#a-date2").value;
+      if (!dateStr) { alert("お相手の生年月日を入れてください"); return; }
+      const [y2, m2, d2] = dateStr.split("-").map(Number);
+      const name2 = area.querySelector("#a-name2").value.trim() || "お相手";
+      let nak2;
+      try { nak2 = nakFromKyureki(Almanac.kyureki(y2, m2, d2)); }
+      catch (e) { return; }
+      const dAB = (nak2 - birthNak + 27) % 27;
+      const dBA = (birthNak - nak2 + 27) % 27;
+      const type = AISHO[aishoType(dAB)];
+      const detail = dAB === 0 ? "" :
+        `<p class="dim">${Uranai.esc(p.name)}から見た${Uranai.esc(name2)}は「${relOf(dAB)}」(${DIST_RANGE(dAB)})、${Uranai.esc(name2)}から見た${Uranai.esc(p.name)}は「${relOf(dBA)}」(${DIST_RANGE(dBA)})。</p>`;
+      area.querySelector("#aisho-out").innerHTML = `
+        <div style="margin-top:16px; padding:16px 18px; border:1px solid var(--gold-dim); border-radius:6px; background:var(--ink-2);">
+          <p style="text-align:center; margin-bottom:10px;">
+            <b style="color:var(--gold-bright)">${NAKS[birthNak].n}</b>(${Uranai.esc(p.name)})×
+            <b style="color:var(--gold-bright)">${NAKS[nak2].n}</b>(${Uranai.esc(name2)})<br>
+            <span style="font-size:20px; color:var(--shu-bright); letter-spacing:0.15em;">${type.name} ${type.luck}</span>
+          </p>
+          <p style="font-size:13.5px;">${type.text}</p>
+          ${detail}
+        </div>`;
+    });
+
     area.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 

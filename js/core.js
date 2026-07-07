@@ -82,6 +82,15 @@ const Uranai = (() => {
             <select id="u-pref">${prefOptions}</select>
             <div class="hint">${opts.placeNote || ""}</div>
           </div>
+          <div class="field" style="flex:0.7 1 110px;">
+            <label>性別</label>
+            <select id="u-sex">
+              <option value="">未指定</option>
+              <option value="F">女性</option>
+              <option value="M">男性</option>
+            </select>
+            <div class="hint">四柱推命の大運で使用</div>
+          </div>
         </div>
         <div class="check-row">
           <input type="checkbox" id="u-notime">
@@ -113,6 +122,7 @@ const Uranai = (() => {
         pref: PREFS[prefIdx][0],
         lat: PREFS[prefIdx][1],
         lon: PREFS[prefIdx][2],
+        sex: $("#u-sex").value,
       };
     }
 
@@ -121,6 +131,7 @@ const Uranai = (() => {
       $("#u-date").value = `${p.y}-${String(p.m).padStart(2, "0")}-${String(p.d).padStart(2, "0")}`;
       $("#u-time").value = `${String(p.hh).padStart(2, "0")}:${String(p.mi).padStart(2, "0")}`;
       $("#u-notime").checked = !p.timeKnown;
+      $("#u-sex").value = p.sex || "";
       const i = PREFS.findIndex(x => x[0] === p.pref);
       if (i >= 0) $("#u-pref").value = String(i);
     }

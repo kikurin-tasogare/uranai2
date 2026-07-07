@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>易経 | 占蔵 -SENZO- 世界の占い大図鑑</title>
+<meta name="description" content="三千年の歴史を持つ変化の書・易経。三枚のコインを六度投じて卦を立てる伝統の擲銭法で、六十四卦から今の問いへの答えを読み解きます。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="no-referrer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <span class="mark">☸</span>
+    <span class="name">占蔵</span>
+    <span class="sub">-SENZO-</span>
+  </a>
+  <a class="header-back" href="index.html">← 大図鑑へ戻る</a>
+</header>
+
+<div class="page-head">
+  <div class="glyph">☰</div>
+  <h1>易経</h1>
+  <div class="reading">え き き ょ う</div>
+  <div class="origin-tag">中国 ・ 三千年の変化の書</div>
+</div>
+
+<main class="container">
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="tab-try">占 う</button>
+    <button class="tab-btn" data-tab="tab-know">知 る(図鑑)</button>
+  </div>
+
+  <!-- ============ 占う ============ -->
+  <section class="tab-panel active" id="tab-try">
+    <div class="form-panel" id="cast-panel">
+      <div class="form-title">問 い を 心 に 定 め よ</div>
+      <div class="field-row">
+        <div class="field">
+          <label>問い(書かなくても、心に思い浮かべるだけでも構いません)</label>
+          <input type="text" id="e-question" placeholder="例:いま迷っているあの件、進むべきか">
+        </div>
+      </div>
+      <p style="font-size:12.5px; color:var(--text-dim); margin-bottom:16px; position:relative; z-index:1;">
+        三枚の銭を六度投じ、下から一爻ずつ卦を立てます(擲銭法)。問いを念じながら、六度投じてください。
+      </p>
+      <div id="lines-view" style="margin:14px 0; position:relative; z-index:1;"></div>
+      <button class="btn-divine" id="e-cast">銭 を 投 じ る</button>
+      <div style="text-align:center; margin-top:12px;">
+        <button class="btn-sub" id="e-reset">はじめからやり直す</button>
+      </div>
+    </div>
+    <div id="result-area"></div>
+    <p class="disclaimer">卦の算出:三枚のコインによる擲銭法(老陰6・少陽7・少陰8・老陽9)を忠実に再現しています。変爻がある場合は本卦とともに之卦(ゆく末の卦)を示します。</p>
+  </section>
+
+  <!-- ============ 知る ============ -->
+  <section class="tab-panel zukan" id="tab-know">
+    <p class="lead">世界は絶えず変化する。<br>その変化の兆しを六十四の型に写し取った、人類最古の「変化の書」。</p>
+
+    <h2>易経とは何か</h2>
+    <p>易経は、古代中国で生まれた占いの書であり、哲学の書です。陰(⚋)と陽(⚊)の二種の爻(こう)を六段重ねた「<b>卦(か)</b>」は全部で八×八=<b>六十四通り</b>。天地の間で起こるあらゆる変化の局面が、この六十四卦のどれかに対応すると考えます。占うとは、いま自分がどの局面に立っているかを知ること――易は「当てる」より「<b>時を知る</b>」占いです。</p>
+
+    <h2>歴史 ── 亀の甲羅から哲学へ</h2>
+    <p>源流は殷代(紀元前二千年紀)の<b>亀卜(きぼく)</b>。亀の甲羅を火であぶり、走るひび割れで神意を問いました。周代に入ると筮竹(ぜいちく)=五十本の細い竹を操作して卦を立てる方法が確立し、『周易』として編まれます。これが易経です。</p>
+    <p>のちに孔子学派が哲学的な注釈「<b>十翼(じゅうよく)</b>」を加えたことで、易経は占いの書であると同時に儒教の最高経典(五経の筆頭)となりました。「君子は豹変す」「虎の尾を踏む」など、今も使われる言葉の多くが易経から生まれています。陰陽の思想はやがて五行説と結びつき、四柱推命など東洋占術すべての土台になりました――系譜マップで見ると、易経は<b>東洋占いの源流</b>に位置しています。</p>
+
+    <h2>占いの仕組み</h2>
+    <p>本来の筮竹の操作は五十本の竹を分け数える複雑な儀式ですが、唐代からは三枚の銭を投げる「<b>擲銭法(てきせんほう)</b>」が広く使われてきました。本図鑑もこれを再現しています。</p>
+    <table>
+      <tr><th>三枚の銭</th><th>値</th><th>爻</th></tr>
+      <tr><td>裏・裏・裏</td><td>6</td><td>老陰 ⚋ ──「変わろうとしている陰」(変爻)</td></tr>
+      <tr><td>表が一枚</td><td>7</td><td>少陽 ⚊</td></tr>
+      <tr><td>表が二枚</td><td>8</td><td>少陰 ⚋</td></tr>
+      <tr><td>表・表・表</td><td>9</td><td>老陽 ⚊ ──「変わろうとしている陽」(変爻)</td></tr>
+    </table>
+    <p>六度投じて下から順に卦を組み上げ、得られた<b>本卦(ほんか)</b>が「いまの局面」。変爻(老陰・老陽)があれば、それが裏返った<b>之卦(しか)</b>が「これからの行き先」を暗示します。</p>
+
+    <div class="aside"><b>ここが面白い:</b>易経は占いの中でも珍しく、「答え」ではなく「問いとの対話」を返します。同じ卦でも問いによって読みが変わる――だから三千年、哲学者からユング(易に深く傾倒した心理学者)まで魅了し続けてきたのです。占う前に問いを一つに絞るのが、良い易の立て方とされます。</div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wheel">☸</div>
+  占蔵 -SENZO- 世界の占い大図鑑
+</footer>
+
+<script src="js/core.js?v=4"></script>
+<script src="js/ekikyo.js?v=4"></script>
+</body>
+</html>

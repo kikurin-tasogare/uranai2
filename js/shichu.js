@@ -96,6 +96,40 @@
     return { birth, setsu, gy, yearStem, yearBranch, monthStem, monthBranch, dayStem, dayBranch, hourStem, hourBranch, tsCorrMin };
   }
 
+  /* ---------- 大運(10年ごとの運気) ---------- */
+  // 陽年干×男・陰年干×女 → 順行 / それ以外 → 逆行
+  function buildDaiun(p, ms) {
+    if (!p.sex) return null;
+    const yang = ms.yearStem % 2 === 0;
+    const forward = (yang && p.sex === "M") || (!yang && p.sex === "F");
+
+    // 立運: 生まれてから次の節まで(順行)/ 前の節から生まれるまで(逆行)の日数 ÷ 3
+    let boundary;
+    if (forward) {
+      const nextLon = Almanac.SETSU_LON[(ms.setsu.index + 1) % 12];
+      boundary = Almanac.searchSunLon(nextLon, ms.birth, 40);
+    } else {
+      boundary = ms.setsu.time;
+    }
+    const days = Math.abs(ms.birth - boundary) / 86400000;
+    const startAge = Math.max(1, Math.round(days / 3));
+
+    // 月柱の六十干支番号から順/逆に進める
+    const monthIdx = ((6 * ms.monthStem - 5 * ms.monthBranch) % 60 + 60) % 60;
+    const list = [];
+    for (let i = 1; i <= 8; i++) {
+      const idx = ((monthIdx + (forward ? i : -i)) % 60 + 60) % 60;
+      list.push({
+        from: startAge + (i - 1) * 10,
+        to: startAge + i * 10 - 1,
+        stem: idx % 10,
+        branch: idx % 12,
+        tsuhen: tsuhen(ms.dayStem, idx % 10),
+      });
+    }
+    return { forward, startAge, list };
+  }
+
   /* ---------- 描画 ---------- */
   function kanshiCell(stem, branch, tsuhenName) {
     if (stem === null) {
@@ -138,6 +172,34 @@
         <span class="bar-num">${counts[i]}</span>
       </div>`).join("");
 
+    // 大運
+    const daiun = buildDaiun(p, ms);
+    let daiunBlock;
+    if (daiun) {
+      const rows = daiun.list.map(d => `
+        <tr>
+          <td style="font-size:12px;color:var(--text-dim);white-space:nowrap;">${d.from}〜${d.to}歳</td>
+          <td><span style="font-size:18px;color:var(--gold-bright);">${STEMS[d.stem]}${BRANCHES[d.branch]}</span></td>
+          <td><span class="tsuhen">${d.tsuhen}</span></td>
+          <td style="font-size:12px;color:var(--text-dim);">${TSUHEN[d.tsuhen]}</td>
+        </tr>`).join("");
+      daiunBlock = `
+        <div class="result-block">
+          <h3>大運 ── 10年ごとの運の潮目</h3>
+          <p class="dim">${daiun.forward ? "順行" : "逆行"}・立運およそ${daiun.startAge}歳(節入りまでの日数から算出)。それぞれの10年に巡る気を通変星で読みます。</p>
+          <table class="meishiki" style="text-align:left;">
+            <tr><th style="text-align:left;">年代</th><th style="text-align:left;">干支</th><th style="text-align:left;">星</th><th style="text-align:left;">その10年の気配</th></tr>
+            ${rows}
+          </table>
+        </div>`;
+    } else {
+      daiunBlock = `
+        <div class="result-block">
+          <h3>大運 ── 10年ごとの運の潮目</h3>
+          <p class="dim">性別を選ぶと、大運(10年ごとに巡る運気の流れ)まで読めます。大運の進み方(順行・逆行)が生年の干と性別の組み合わせで決まる伝統ルールのためです。</p>
+        </div>`;
+    }
+
     const setsuJst = Almanac.toJst(ms.setsu.time);
     const corrStr = ms.tsCorrMin === null ? "" :
       `真太陽時補正 ${ms.tsCorrMin >= 0 ? "+" : ""}${ms.tsCorrMin.toFixed(0)}分(${p.pref})`;
@@ -179,6 +241,8 @@
           <p style="margin-top:10px;">最も強い気は<b style="color:var(--gold-bright)">「${strongest}」</b>――${ELEM_NOTE[strongest]}の気が、あなたの土台です。
           ${missing.length ? `いっぽう<b style="color:var(--shu-bright)">「${missing.join("・")}」</b>の気が命式に見当たりません。${missing.map(e => ELEM_NOTE[e]).join("、")}は、意識して補うとよい伸びしろです。` : "五行がまんべんなく揃った、バランスの良い命式です。"}</p>
         </div>
+
+        ${daiunBlock}
       </div>
     `;
     area.scrollIntoView({ behavior: "smooth", block: "start" });
