@@ -212,6 +212,11 @@ const Uranai = (() => {
     });
   }
 
+  /* ---------- PWA: サービスワーカー登録(オフライン対応) ---------- */
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js").catch(() => { /* 非対応環境では静かに諦める */ });
+  }
+
   /* ---------- 漂うクラゲ(祐希ちゃんが好きなので全ページに) ---------- */
   function jellySVG(main, spots) {
     return `<svg viewBox="0 0 64 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

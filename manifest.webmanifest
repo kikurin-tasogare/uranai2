@@ -1,0 +1,14 @@
+{
+  "name": "占蔵 -SENZO- 世界の占い大図鑑",
+  "short_name": "占蔵",
+  "description": "世界中の占いを『知って、試せる』大図鑑。七つの占術があなたを観る。",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#071310",
+  "theme_color": "#0f231d",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
