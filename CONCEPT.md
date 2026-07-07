@@ -28,7 +28,7 @@
 - 天文計算:`js/vendor/astronomy.browser.min.js`(astronomy-engine, MIT)
 - 暦計算コア:`js/almanac.js`(節気・干支・旧暦・真太陽時・ASC)
 - 共通UI:`js/core.js`(プロフィールのlocalStorage保存、入力フォーム、タブ)
-- デザイン:黒×金×朱の仏教チック。明朝体(Shippori Mincho)、曼荼羅光背、蓮弁SVG
+- デザイン:深緑の闇に翡翠(緑)・瑠璃(水色)・蓮(ピンク)の仏教チック。明朝体(Shippori Mincho)、曼荼羅光背、蓮弁SVG
 
 ## セキュリティ(2026-07-07 監査済み)
 - ユーザー入力(名前)は `Uranai.esc()` でHTMLエスケープしてから描画(格納型XSS対策。攻撃入力での実地テスト済み)

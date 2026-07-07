@@ -138,9 +138,9 @@
               <label>お相手の呼び名</label>
               <input type="text" id="a-name2" placeholder="例:ゆきちゃん">
             </div>
-            <div class="field">
+            <div class="field" style="flex:2 1 240px;">
               <label>お相手の生年月日</label>
-              <input type="date" id="a-date2" min="1900-01-01" max="2035-12-31">
+              ${Uranai.dateSelectsHTML("a-date2")}
             </div>
           </div>
           <button class="btn-sub" id="a-check" style="width:100%; padding:10px;">縁 を 観 る</button>
@@ -159,10 +159,11 @@
       </div>
     `;
 
+    Uranai.wireDateSelects(area, "a-date2");
     area.querySelector("#a-check").addEventListener("click", () => {
-      const dateStr = area.querySelector("#a-date2").value;
-      if (!dateStr) { alert("お相手の生年月日を入れてください"); return; }
-      const [y2, m2, d2] = dateStr.split("-").map(Number);
+      const ymd = Uranai.readDateSelects(area, "a-date2");
+      if (!ymd) { alert("お相手の生年月日(年・月・日)を選んでください"); return; }
+      const { y: y2, m: m2, d: d2 } = ymd;
       const name2 = area.querySelector("#a-name2").value.trim() || "お相手";
       let nak2;
       try { nak2 = nakFromKyureki(Almanac.kyureki(y2, m2, d2)); }

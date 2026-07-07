@@ -52,6 +52,49 @@ const Uranai = (() => {
     saveProfiles(loadProfiles().filter(x => x.name !== name));
   }
 
+  /* ---------- 生年月日プルダウン(年・月・日を一発選択) ---------- */
+  function dateSelectsHTML(prefix, startYear = 1920, endYear = 2035) {
+    const ys = [];
+    for (let y = endYear; y >= startYear; y--) ys.push(`<option value="${y}">${y}</option>`);
+    const ms = Array.from({ length: 12 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join("");
+    const ds = Array.from({ length: 31 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join("");
+    return `<div style="display:flex; gap:8px; align-items:center;">
+      <select id="${prefix}-y" style="flex:1.5; width:auto;"><option value="">年</option>${ys.join("")}</select><span style="color:var(--text-faint);font-size:12px;">年</span>
+      <select id="${prefix}-m" style="flex:1; width:auto;"><option value="">月</option>${ms}</select><span style="color:var(--text-faint);font-size:12px;">月</span>
+      <select id="${prefix}-d" style="flex:1; width:auto;"><option value="">日</option>${ds}</select><span style="color:var(--text-faint);font-size:12px;">日</span>
+    </div>`;
+  }
+
+  // 月に応じて日の選択肢(29〜31日)を無効化する
+  function wireDateSelects(root, prefix) {
+    const $y = root.querySelector(`#${prefix}-y`);
+    const $m = root.querySelector(`#${prefix}-m`);
+    const $d = root.querySelector(`#${prefix}-d`);
+    function adjust() {
+      const y = Number($y.value) || 2000;
+      const m = Number($m.value) || 1;
+      const max = new Date(y, m, 0).getDate();
+      [...$d.options].forEach(o => { if (o.value) o.disabled = Number(o.value) > max; });
+      if (Number($d.value) > max) $d.value = "";
+    }
+    $y.addEventListener("change", adjust);
+    $m.addEventListener("change", adjust);
+  }
+
+  function readDateSelects(root, prefix) {
+    const y = Number(root.querySelector(`#${prefix}-y`).value);
+    const m = Number(root.querySelector(`#${prefix}-m`).value);
+    const d = Number(root.querySelector(`#${prefix}-d`).value);
+    if (!y || !m || !d) return null;
+    return { y, m, d };
+  }
+
+  function setDateSelects(root, prefix, y, m, d) {
+    root.querySelector(`#${prefix}-y`).value = String(y);
+    root.querySelector(`#${prefix}-m`).value = String(m);
+    root.querySelector(`#${prefix}-d`).value = String(d);
+  }
+
   /* ---------- 入力フォーム ---------- */
   // opts: { timeNote, placeNote } 説明文の差し替え用
   // onDivine(profile) が「占う」押下時に呼ばれる
@@ -66,9 +109,9 @@ const Uranai = (() => {
             <label>名前(呼び名)</label>
             <input type="text" id="u-name" placeholder="例:きくりん">
           </div>
-          <div class="field">
+          <div class="field" style="flex:2 1 240px;">
             <label>生年月日</label>
-            <input type="date" id="u-date" min="1900-01-01" max="2035-12-31">
+            ${dateSelectsHTML("u-date")}
           </div>
         </div>
         <div class="field-row">
@@ -104,11 +147,12 @@ const Uranai = (() => {
     `;
     const $ = id => container.querySelector(id);
     $("#u-pref").value = "12"; // 東京都を初期値に
+    wireDateSelects(container, "u-date");
 
     function readForm() {
-      const dateStr = $("#u-date").value;
-      if (!dateStr) { alert("生年月日を入れてください"); return null; }
-      const [y, m, d] = dateStr.split("-").map(Number);
+      const ymd = readDateSelects(container, "u-date");
+      if (!ymd) { alert("生年月日(年・月・日)を選んでください"); return null; }
+      const { y, m, d } = ymd;
       const noTime = $("#u-notime").checked;
       let hh = 12, mi = 0;
       if (!noTime && $("#u-time").value) {
@@ -128,7 +172,7 @@ const Uranai = (() => {
 
     function fillForm(p) {
       $("#u-name").value = p.name;
-      $("#u-date").value = `${p.y}-${String(p.m).padStart(2, "0")}-${String(p.d).padStart(2, "0")}`;
+      setDateSelects(container, "u-date", p.y, p.m, p.d);
       $("#u-time").value = `${String(p.hh).padStart(2, "0")}:${String(p.mi).padStart(2, "0")}`;
       $("#u-notime").checked = !p.timeKnown;
       $("#u-sex").value = p.sex || "";
@@ -190,5 +234,9 @@ const Uranai = (() => {
     </details>`;
   }
 
-  return { PREFS, esc, glossary, loadProfiles, upsertProfile, removeProfile, renderForm, initTabs };
+  return {
+    PREFS, esc, glossary,
+    dateSelectsHTML, wireDateSelects, readDateSelects, setDateSelects,
+    loadProfiles, upsertProfile, removeProfile, renderForm, initTabs,
+  };
 })();
