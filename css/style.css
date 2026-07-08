@@ -48,7 +48,7 @@ body::before {
   z-index: 0;
 }
 
-main, header.site-header, footer.site-footer { position: relative; z-index: 1; }
+main, footer.site-footer { position: relative; z-index: 1; }
 
 a { color: var(--gold-bright); text-decoration: none; }
 a:hover { color: #c6f5e0; }
@@ -73,8 +73,23 @@ a:hover { color: #c6f5e0; }
 .brand .mark { font-size: 20px; }
 .brand .name { font-size: 20px; font-weight: 600; letter-spacing: 0.35em; }
 .brand .sub { font-size: 11px; color: var(--text-dim); letter-spacing: 0.2em; }
-.header-back { font-size: 13px; color: var(--text-dim); }
-.header-back:hover { color: var(--gold-bright); }
+.header-back {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: var(--text-dim);
+  padding: 8px 14px;
+  margin: -8px -14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: color 0.25s, border-color 0.25s, background 0.25s;
+}
+.header-back:hover, .header-back:active {
+  color: var(--gold-bright);
+  border-color: var(--gold-dim);
+  background: rgba(95,191,154,0.08);
+}
 
 /* ---------- 汎用レイアウト ---------- */
 .container { max-width: 760px; margin: 0 auto; padding: 0 18px 90px; }
