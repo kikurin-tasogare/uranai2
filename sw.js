@@ -4,17 +4,17 @@
    一度開いたページが動くようにする。
    ============================================================ */
 
-const CACHE = "senzo-v1";
+const CACHE = "senzo-v2";
 
 const CORE = [
   "./",
   "index.html", "mandala.html",
   "sukuyo.html", "shichusuimei.html", "astrology.html", "maya.html",
-  "ekikyo.html", "shibi.html", "jyotish.html",
+  "ekikyo.html", "shibi.html", "jyotish.html", "kaigetsu.html",
   "css/style.css",
   "js/core.js", "js/almanac.js", "js/vendor/astronomy.browser.min.js",
   "js/sukuyo.js", "js/shichu.js", "js/astrology.js", "js/maya.js",
-  "js/ekikyo.js", "js/shibi.js", "js/jyotish.js", "js/mandala.js",
+  "js/ekikyo.js", "js/shibi.js", "js/jyotish.js", "js/mandala.js", "js/kaigetsu.js",
   "icons/icon-192.png", "icons/icon-512.png",
   "manifest.webmanifest",
 ];
