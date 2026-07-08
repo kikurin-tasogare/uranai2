@@ -95,6 +95,26 @@ const Uranai = (() => {
     root.querySelector(`#${prefix}-d`).value = String(d);
   }
 
+  /* ---------- 出生時刻プルダウン(時・分を一発選択) ---------- */
+  function timeSelectsHTML(prefix) {
+    const hh = Array.from({ length: 24 }, (_, i) => `<option value="${i}">${String(i).padStart(2, "0")}</option>`).join("");
+    const mm = Array.from({ length: 60 }, (_, i) => `<option value="${i}">${String(i).padStart(2, "0")}</option>`).join("");
+    return `<div style="display:flex; gap:8px; align-items:center;">
+      <select id="${prefix}-hh" style="flex:1; width:auto;">${hh}</select><span style="color:var(--text-faint);font-size:12px;">時</span>
+      <select id="${prefix}-mm" style="flex:1; width:auto;">${mm}</select><span style="color:var(--text-faint);font-size:12px;">分</span>
+    </div>`;
+  }
+  function readTimeSelects(root, prefix) {
+    return {
+      hh: Number(root.querySelector(`#${prefix}-hh`).value),
+      mm: Number(root.querySelector(`#${prefix}-mm`).value),
+    };
+  }
+  function setTimeSelects(root, prefix, hh, mm) {
+    root.querySelector(`#${prefix}-hh`).value = String(hh);
+    root.querySelector(`#${prefix}-mm`).value = String(mm);
+  }
+
   /* ---------- 入力フォーム ---------- */
   // opts: { timeNote, placeNote } 説明文の差し替え用
   // onDivine(profile) が「占う」押下時に呼ばれる
@@ -115,9 +135,9 @@ const Uranai = (() => {
           </div>
         </div>
         <div class="field-row">
-          <div class="field">
+          <div class="field" style="flex:1.4 1 170px;">
             <label>出生時刻</label>
-            <input type="time" id="u-time" value="12:00">
+            ${timeSelectsHTML("u-time")}
             <div class="hint">${opts.timeNote || "分かる範囲でOK"}</div>
           </div>
           <div class="field">
@@ -148,6 +168,7 @@ const Uranai = (() => {
     const $ = id => container.querySelector(id);
     $("#u-pref").value = "12"; // 東京都を初期値に
     wireDateSelects(container, "u-date");
+    setTimeSelects(container, "u-time", 12, 0);
 
     function readForm() {
       const ymd = readDateSelects(container, "u-date");
@@ -155,8 +176,9 @@ const Uranai = (() => {
       const { y, m, d } = ymd;
       const noTime = $("#u-notime").checked;
       let hh = 12, mi = 0;
-      if (!noTime && $("#u-time").value) {
-        [hh, mi] = $("#u-time").value.split(":").map(Number);
+      if (!noTime) {
+        const t = readTimeSelects(container, "u-time");
+        hh = t.hh; mi = t.mm;
       }
       const prefIdx = Number($("#u-pref").value);
       return {
@@ -173,7 +195,7 @@ const Uranai = (() => {
     function fillForm(p) {
       $("#u-name").value = p.name;
       setDateSelects(container, "u-date", p.y, p.m, p.d);
-      $("#u-time").value = `${String(p.hh).padStart(2, "0")}:${String(p.mi).padStart(2, "0")}`;
+      setTimeSelects(container, "u-time", p.hh, p.mi);
       $("#u-notime").checked = !p.timeKnown;
       $("#u-sex").value = p.sex || "";
       const i = PREFS.findIndex(x => x[0] === p.pref);
@@ -281,6 +303,7 @@ const Uranai = (() => {
   return {
     PREFS, esc, glossary,
     dateSelectsHTML, wireDateSelects, readDateSelects, setDateSelects,
+    timeSelectsHTML, readTimeSelects, setTimeSelects,
     loadProfiles, upsertProfile, removeProfile, renderForm, initTabs,
   };
 })();
